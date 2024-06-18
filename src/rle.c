@@ -67,7 +67,13 @@ static void compress(char *in_file_path, char *out_file_path) {
     // of the files being compressed can't exceed its size. That said, this
     // is just a toy compressor that's not meant to handle very large files
     FileContent in_file_content = read_entire_file(in_file_path);
-    if (!in_file_content.size) { return; }
+    if (in_file_content.size < 8) {
+        if (in_file_content.size > 0) {
+            fprintf(stderr,
+                "Incorrect format, the first 8 bytes should represent the size of the decompressed size\n");
+        }
+        return;
+    }
     SizedBuffer sized_out_buffer;
     // The size of the raw file is always present and occupies the first 8 bytes.
     // In the worst case, each byte occupies two bytes (1 for the original and one for the count)
