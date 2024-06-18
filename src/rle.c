@@ -70,7 +70,7 @@ static void compress(char *in_file_path, char *out_file_path) {
     if (in_file_content.size < 8) {
         if (in_file_content.size > 0) {
             fprintf(stderr,
-                "Incorrect format, the first 8 bytes should represent the size of the decompressed size\n");
+                "Incorrect format, the first 8 bytes should represent the size of the decompressed file\n");
         }
         return;
     }
