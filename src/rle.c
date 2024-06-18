@@ -70,7 +70,7 @@ static void compress(char *in_file_path, char *out_file_path) {
     if (!in_file_content.size) { return; }
     SizedBuffer sized_out_buffer;
     // The size of the raw file is always present and occupies the first 8 bytes.
-    // In the worst case, each byte occupies two bytes (1 for the original and one for the count)
+    // In the worst case, each byte occupies two bytes (1 for the original and 1 for the count)
     sized_out_buffer.size = 8 + 2 * in_file_content.size;
     sized_out_buffer.buffer = malloc(sized_out_buffer.size);
     uint64_t compressed_size = rle_compress(in_file_content, sized_out_buffer);
