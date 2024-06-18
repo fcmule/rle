@@ -90,7 +90,7 @@ static uint64_t rle_decompress(FileContent in_file_content, SizedBuffer sized_ou
         uint8_t byte = in_buffer[i];
         uint8_t count = in_buffer[i+1];
         // Check if the output buffer has enough space left for the bytes
-        if ((int64_t)(j + count) <= (int64_t)(out_buffer_size)) {
+        if ((j + count) <= out_buffer_size) {
             while (count--) {
                 out_buffer[j++] = byte;
             }
